@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameDirector : MonoBehaviour
 {
@@ -27,5 +28,10 @@ public class GameDirector : MonoBehaviour
         time -= Time.deltaTime;
         TimeGauge.GetComponent<Image>().fillAmount -= 1.0f/ countTime * Time.deltaTime;
         Debug.Log(time);
+
+        if(time == 0)
+        {
+            SceneManager.LoadScene("");
+        }
     }
 }
