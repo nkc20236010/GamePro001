@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         //x²•ûŒü‚ÌˆÚ“®”ÍˆÍ§ŒÀ
         pos.x = Mathf.Clamp(pos.x, _minX, _maxX);
         //y²•ûŒü‚ÌˆÚ“®”ÍˆÍ§ŒÀ
-        pos.y = Mathf.Clamp(pos.x, _minY, _maxY);
+        pos.y = Mathf.Clamp(pos.y, _minY, _maxY);
 
         transform.position = pos;
     }

@@ -35,4 +35,13 @@ public class EnemyController : MonoBehaviour
             Destroy (gameObject);
         }
     }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "ShotTag")
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }
