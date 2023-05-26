@@ -18,13 +18,13 @@ public class ShotController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-        void OnTriggerEnter2D(Collider2D collider)
-        {
-            if(collider.gameObject.tag == "EnemyTag")
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.gameObject.tag == "EnemyTag")
         {
             Destroy(gameObject );
         }
-        }
+    }
 
     
 }

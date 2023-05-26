@@ -6,14 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class GameDirector : MonoBehaviour
 {
+    int hit = 0;
+    float score;
     float time = 100.0f;
     GameObject TimeGauge;
+    GameObject Km;
 
     [SerializeField]
     float countTime;
 
     void Start()
     {
+        Km = GameObject.Find("Km");
         TimeGauge = GameObject.Find("TimeGauge");
     }
 
@@ -25,13 +29,30 @@ public class GameDirector : MonoBehaviour
 
     void Update()
     {
+        score += Time.deltaTime;
+        Km.GetComponent<Text>().text = score.ToString("F2") + "Km";
+
+
         time -= Time.deltaTime;
         TimeGauge.GetComponent<Image>().fillAmount -= 1.0f/ countTime * Time.deltaTime;
-        Debug.Log(time);
+        //Debug.Log(time);
 
-        if(time == 0)
+        //if(time <= 0)
+        //{
+        //    SceneManager.LoadScene("TitleScene");
+        //}
+
+        if (hit >= 5)
         {
-            SceneManager.LoadScene("");
+            Debug.Log("hit");
+            SceneManager.LoadScene("GameOverScene");
         }
+
     }
+    public void HitCounter()
+    {
+        hit++;
+    }
+   
+    
 }

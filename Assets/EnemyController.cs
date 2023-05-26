@@ -20,20 +20,17 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        Vector2 p1 = transform.position;
-        Vector2 p2 = player.transform.position;
-        Vector2 dir = p1 - p2;
-        float z = dir.magnitude;
-        float r1 = 0.5f;
-        float r2 = 0.5f;
+        //Vector2 p1 = transform.position;
+        //Vector2 p2 = player.transform.position;
+        //Vector2 dir = p1 - p2;
+        //float z = dir.magnitude;
+        //float r1 = 0.5f;
+        //float r2 = 0.5f;
 
-        if(z <r1 + r2)
-        {
-            GameObject director = GameObject.Find("GameDirector");
-            director.GetComponent<GameDirector>().DerceaseHp();
-
-            Destroy (gameObject);
-        }
+        //if(z <r1 + r2)
+        //{
+        //    Destroy (gameObject);
+        //}
     }
 
     void OnTriggerEnter2D(Collider2D collider)

@@ -14,10 +14,10 @@ public class ShotGenerator : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButton("Jump"))
-        {
-            GameObject go = Instantiate(ShotPre);
-            go.transform.position = Player.transform.position;
-        }
+        //if (Input.GetButton("Jump"))
+        //{
+        //    GameObject go = Instantiate(ShotPre);
+        //    go.transform.position = Player.transform.position;
+        //}
     }
 }

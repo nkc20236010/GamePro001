@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    
+    [SerializeField]
+    int hit = 0;
+    float span ;
+    float delta = 0;
+    public GameObject ShotPre;
+    GameObject Player;
+    GameObject gameDirector;
 
     Animator PlayerAnime;
 
@@ -21,12 +28,13 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        gameDirector = GameObject.Find("GameDirector");
         PlayerAnime = GetComponent<Animator>();
     }
 
     public void Update()
     {
-        float speed = 0.09f;
+        float speed = 0.05f;
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
         transform.position += new Vector3(x * speed, y * speed, 0);
@@ -40,13 +48,38 @@ public class PlayerController : MonoBehaviour
         pos.y = Mathf.Clamp(pos.y, _minY, _maxY);
 
         transform.position = pos;
-    }
 
-    void OnTriggerEnther2D(Collider2D collision)
+        Shot();
+
+        
+    }
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collision.gameObject.tag == "EnemyTag")
+        Debug.Log("a");
+
+        if (collider.gameObject.tag == "EnemyTag")
         {
-            Destroy(gameObject);
+            gameDirector.GetComponent<GameDirector>().DerceaseHp();
+            gameDirector.GetComponent<GameDirector>().HitCounter();
+            Destroy(collider.gameObject);
         }
     }
+
+
+    public void Shot()
+    {
+        if (Input.GetButton("Jump"))
+        {
+            delta += Time.deltaTime;
+            if(delta > span)
+            {
+                delta = 0;
+                GameObject go = Instantiate(ShotPre);
+                go.transform.position = transform.position;
+            }
+
+
+            
+        }
+    } 
 }
