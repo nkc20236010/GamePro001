@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ShotGenerator : MonoBehaviour
 {
-    public GameObject ShotPre;
-    GameObject Player;
+    //public GameObject ShotPre;
+    //GameObject Player;
 
     void Start()
     {
-       Player = GameObject.Find("MyChar_0");
+       //Player = GameObject.Find("MyChar_0");
     }
 
     void Update()

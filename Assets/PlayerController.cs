@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     int hit = 0;
+    [SerializeField]
     float span ;
     float delta = 0;
     public GameObject ShotPre;
@@ -55,7 +56,7 @@ public class PlayerController : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("a");
+        //Debug.Log("a");
 
         if (collider.gameObject.tag == "EnemyTag")
         {
@@ -77,9 +78,6 @@ public class PlayerController : MonoBehaviour
                 GameObject go = Instantiate(ShotPre);
                 go.transform.position = transform.position;
             }
-
-
-            
         }
     } 
 }

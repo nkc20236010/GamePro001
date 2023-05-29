@@ -8,12 +8,14 @@ public class GameDirector : MonoBehaviour
 {
     int hit = 0;
     float score;
-    float time = 100.0f;
+    
     GameObject TimeGauge;
     GameObject Km;
 
     [SerializeField]
     float countTime;
+    [SerializeField]
+    float time;
 
     void Start()
     {
@@ -33,14 +35,14 @@ public class GameDirector : MonoBehaviour
         Km.GetComponent<Text>().text = score.ToString("F2") + "Km";
 
 
-        time -= Time.deltaTime;
+        time -= 1.0f / countTime * Time.deltaTime;
         TimeGauge.GetComponent<Image>().fillAmount -= 1.0f/ countTime * Time.deltaTime;
-        //Debug.Log(time);
+        Debug.Log(time);
 
-        //if(time <= 0)
-        //{
-        //    SceneManager.LoadScene("TitleScene");
-        //}
+        if (time <= 0)
+        {
+            SceneManager.LoadScene("ClearScene");
+        }
 
         if (hit >= 5)
         {
