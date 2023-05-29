@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameDirector : MonoBehaviour
 {
     int hit = 0;
-    float score;
+    public float score;
     
     GameObject TimeGauge;
     GameObject Km;
@@ -26,7 +26,7 @@ public class GameDirector : MonoBehaviour
     public void DerceaseHp()
     {
         TimeGauge.GetComponent<Image>().fillAmount -= 0.1f;
-        time -= 10.0f;
+        time -= 1.0f / countTime;
     }
 
     void Update()
@@ -39,7 +39,7 @@ public class GameDirector : MonoBehaviour
         TimeGauge.GetComponent<Image>().fillAmount -= 1.0f/ countTime * Time.deltaTime;
         Debug.Log(time);
 
-        if (time <= 0)
+        if (time < 0)
         {
             SceneManager.LoadScene("ClearScene");
         }
