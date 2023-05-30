@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ShotController : MonoBehaviour
 {
+    GameObject gameDirector;
 
     void Start()
     {
-        
+        gameDirector = GameObject.Find("GameDirector");
     }
 
     void Update()
@@ -22,6 +23,7 @@ public class ShotController : MonoBehaviour
     {
         if(collider.gameObject.tag == "EnemyTag")
         {
+            gameDirector.GetComponent<GameDirector>().KillCounter();
             Destroy(gameObject );
         }
     }

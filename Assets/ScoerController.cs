@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class ScoerController : MonoBehaviour
 {
-    float score;
+    public static float resultscore;
 
     void Start()
     {
-        GetComponent<Text>().text = score.ToString("F2") + "Km";
+
+        GetComponent<Text>().text = resultscore.ToString("F2") + "Km";
         //Km = GameObject.Find("Km");
     }
 

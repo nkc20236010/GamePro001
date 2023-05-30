@@ -6,11 +6,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    int hit = 0;
-    [SerializeField]
-    float span ;
+    [SerializeField] int hit = 0;
+    [SerializeField] float span ;
+    
     float delta = 0;
+    int EnemyKill =0;
+
     public GameObject ShotPre;
     GameObject Player;
     GameObject gameDirector;
@@ -35,6 +36,9 @@ public class PlayerController : MonoBehaviour
 
     public void Update()
     {
+        gameDirector.GetComponent<GameDirector>().KillCounter();
+        //EnemyKill =  GetComponent<GameDirector>().KillCounter();
+
         float speed = 0.05f;
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
@@ -52,8 +56,8 @@ public class PlayerController : MonoBehaviour
 
         Shot();
 
-        
     }
+
     void OnTriggerEnter2D(Collider2D collider)
     {
         //Debug.Log("a");
@@ -78,6 +82,7 @@ public class PlayerController : MonoBehaviour
                 GameObject go = Instantiate(ShotPre);
                 go.transform.position = transform.position;
             }
+            //if(EnemyKll )
         }
-    } 
+    }
 }

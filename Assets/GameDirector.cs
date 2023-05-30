@@ -6,16 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class GameDirector : MonoBehaviour
 {
+    int KillCount;
     int hit = 0;
     public float score;
+
     
     GameObject TimeGauge;
     GameObject Km;
 
-    [SerializeField]
-    float countTime;
-    [SerializeField]
-    float time;
+    [SerializeField]  float countTime;
+    [SerializeField]  float time;
 
     void Start()
     {
@@ -41,24 +41,24 @@ public class GameDirector : MonoBehaviour
 
         if (time < 0)
         {
+            ScoerController.resultscore = score;
             SceneManager.LoadScene("ClearScene");
         }
 
-        if (hit >= 5)
+        if (hit >= 2)
         {
+            ScoerController.resultscore = score;
             Debug.Log("hit");
             SceneManager.LoadScene("GameOverScene");
-        }
-
-        if (Input.GetButtonDown("Fire1"))
-        {
-            SceneManager.LoadScene("GameScene");
         }
     }
     public void HitCounter()
     {
-        hit++;
+       hit++;
     }
-   
+   public void KillCounter()
+    {
+        KillCount++;
+    }
     
 }
