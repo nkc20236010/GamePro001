@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float span ;
     
     float delta = 0;
-    int EnemyKill =0;
+    int EnemyKill = 0;
 
     public GameObject ShotPre;
     GameObject Player;
@@ -36,8 +36,7 @@ public class PlayerController : MonoBehaviour
 
     public void Update()
     {
-        gameDirector.GetComponent<GameDirector>().KillCounter();
-        //EnemyKill =  GetComponent<GameDirector>().KillCounter();
+        EnemyKill = gameDirector.GetComponent<GameDirector>().KillCount;
 
         float speed = 0.05f;
         float x = Input.GetAxisRaw("Horizontal");
@@ -55,12 +54,14 @@ public class PlayerController : MonoBehaviour
         transform.position = pos;
 
         Shot();
+        Debug.Log(EnemyKill);
 
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
         //Debug.Log("a");
+        
 
         if (collider.gameObject.tag == "EnemyTag")
         {
@@ -76,13 +77,22 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Jump"))
         {
             delta += Time.deltaTime;
-            if(delta > span)
+            if (delta > span)
             {
                 delta = 0;
                 GameObject go = Instantiate(ShotPre);
-                go.transform.position = transform.position;
+
+                if (EnemyKill > 15)
+                {
+                    Instantiate(ShotPre, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.Euler(0, 0, -90));
+
+                }
             }
-            //if(EnemyKll )
+            
+            //if(EnemyKill > 30)
+            //{
+                
+            //}
         }
     }
 }

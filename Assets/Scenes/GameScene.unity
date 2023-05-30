@@ -822,8 +822,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e41104aeb1f37c4eba3121a92099224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KillCount: 0
   score: 0
-  countTime: 10
+  countTime: 100
   time: 1
 --- !u!4 &1234235931
 Transform:

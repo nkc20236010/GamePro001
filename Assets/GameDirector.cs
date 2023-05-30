@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameDirector : MonoBehaviour
 {
-    int KillCount;
+    public int KillCount;
     int hit = 0;
     public float score;
 
@@ -37,7 +37,7 @@ public class GameDirector : MonoBehaviour
 
         time -= 1.0f / countTime * Time.deltaTime;
         TimeGauge.GetComponent<Image>().fillAmount -= 1.0f/ countTime * Time.deltaTime;
-        Debug.Log(time);
+        //Debug.Log(time);
 
         if (time < 0)
         {
@@ -58,7 +58,7 @@ public class GameDirector : MonoBehaviour
     }
    public void KillCounter()
     {
-        KillCount++;
+       KillCount++;
     }
     
 }
