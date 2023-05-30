@@ -50,6 +50,10 @@ public class GameDirector : MonoBehaviour
             SceneManager.LoadScene("GameOverScene");
         }
 
+        if (Input.GetButtonDown("Fire1"))
+        {
+            SceneManager.LoadScene("GameScene");
+        }
     }
     public void HitCounter()
     {
