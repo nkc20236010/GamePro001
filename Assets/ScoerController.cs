@@ -9,7 +9,6 @@ public class ScoerController : MonoBehaviour
 
     void Start()
     {
-
         GetComponent<Text>().text = resultscore.ToString("F2") + "Km";
         //Km = GameObject.Find("Km");
     }

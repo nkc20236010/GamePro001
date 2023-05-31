@@ -13,12 +13,14 @@ public class GameDirector : MonoBehaviour
     
     GameObject TimeGauge;
     GameObject Km;
+    GameObject EnemyCountor;
 
     [SerializeField]  float countTime;
     [SerializeField]  float time;
 
     void Start()
     {
+        EnemyCountor = GameObject.Find("EnemyCountor");
         Km = GameObject.Find("Km");
         TimeGauge = GameObject.Find("TimeGauge");
     }
@@ -31,6 +33,8 @@ public class GameDirector : MonoBehaviour
 
     void Update()
     {
+        EnemyCountor.GetComponent<Text>().text =KillCount.ToString("000") + "Kill";
+
         score += Time.deltaTime;
         Km.GetComponent<Text>().text = score.ToString("F2") + "Km";
 
@@ -41,14 +45,15 @@ public class GameDirector : MonoBehaviour
 
         if (time < 0)
         {
+            ScoerController.Kill = KillCount;
             ScoerController.resultscore = score;
             SceneManager.LoadScene("ClearScene");
         }
 
         if (hit >= 2)
         {
+            ScoerController.Kill = KillCount;
             ScoerController.resultscore = score;
-            Debug.Log("hit");
             SceneManager.LoadScene("GameOverScene");
         }
     }

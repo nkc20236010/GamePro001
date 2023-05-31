@@ -80,13 +80,26 @@ public class PlayerController : MonoBehaviour
             if (delta > span)
             {
                 delta = 0;
-                GameObject go = Instantiate(ShotPre);
-
-                if (EnemyKill > 15)
+                if(EnemyKill < 15)
                 {
-                    Instantiate(ShotPre, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.Euler(0, 0, -90));
-
+                    Instantiate(ShotPre, transform.position, Quaternion.Euler(0, 0, -90));
                 }
+                else if(EnemyKill < 30)
+                {
+                    Instantiate(ShotPre, new Vector3(transform.position.x + 0.5f,transform.position.y + 0.5f,0), Quaternion.Euler(0, 0, -90));
+                    Instantiate(ShotPre, new Vector3(transform.position.x + 0.5f, transform.position.y - 0.5f, 0), Quaternion.Euler(0,0, -90));
+                }
+                else
+                {
+                    Instantiate(ShotPre, new Vector3(transform.position.x + 0.5f, transform.position.y, 0), Quaternion.Euler(0, 0, -90));
+                    Instantiate(ShotPre, new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, 0), Quaternion.Euler(0, 0, -90));
+                    Instantiate(ShotPre, new Vector3(transform.position.x + 0.5f, transform.position.y - 0.5f, 0), Quaternion.Euler(0, 0, -90));
+                }
+                //if (EnemyKill > 15)
+                //{
+                //    Instantiate(ShotPre, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.Euler(0, 0, -90));
+
+                //}
                 //if (EnemyKill > 30)
                 //{
                 //    Instantiate(ShotPre, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.Euler(0, 0, -90));
