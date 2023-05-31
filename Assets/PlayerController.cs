@@ -87,12 +87,11 @@ public class PlayerController : MonoBehaviour
                     Instantiate(ShotPre, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.Euler(0, 0, -90));
 
                 }
+                //if (EnemyKill > 30)
+                //{
+                //    Instantiate(ShotPre, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.Euler(0, 0, -90));
+                //}
             }
-            
-            //if(EnemyKill > 30)
-            //{
-                
-            //}
         }
     }
 }
