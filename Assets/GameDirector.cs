@@ -13,7 +13,7 @@ public class GameDirector : MonoBehaviour
     
     GameObject TimeGauge;
     GameObject Km;
-    GameObject EnemyCountor;
+    GameObject EnemyCountor; 
 
     [SerializeField]  float countTime;
     [SerializeField]  float time;
@@ -41,18 +41,18 @@ public class GameDirector : MonoBehaviour
 
         time -= 1.0f / countTime * Time.deltaTime;
         TimeGauge.GetComponent<Image>().fillAmount -= 1.0f/ countTime * Time.deltaTime;
-        //Debug.Log(time);
+        Debug.Log(time);
 
         if (time < 0)
         {
-            ScoerController.Kill = KillCount;
+            ScoerController1.Kill = KillCount;
             ScoerController.resultscore = score;
             SceneManager.LoadScene("ClearScene");
         }
 
-        if (hit >= 2)
+        if (hit >= 1)
         {
-            ScoerController.Kill = KillCount;
+            ScoerController1.Kill = KillCount;
             ScoerController.resultscore = score;
             SceneManager.LoadScene("GameOverScene");
         }

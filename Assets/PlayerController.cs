@@ -6,9 +6,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] float speed = 0.03f;
     [SerializeField] int hit = 0;
     [SerializeField] float span ;
-    
+
     float delta = 0;
     int EnemyKill = 0;
 
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour
     {
         EnemyKill = gameDirector.GetComponent<GameDirector>().KillCount;
 
-        float speed = 0.05f;
+        
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
         transform.position += new Vector3(x * speed, y * speed, 0);
@@ -54,7 +55,7 @@ public class PlayerController : MonoBehaviour
         transform.position = pos;
 
         Shot();
-        Debug.Log(EnemyKill);
+        //Debug.Log(EnemyKill);
 
     }
 
@@ -80,11 +81,11 @@ public class PlayerController : MonoBehaviour
             if (delta > span)
             {
                 delta = 0;
-                if(EnemyKill < 15)
+                if(EnemyKill < 55)
                 {
                     Instantiate(ShotPre, transform.position, Quaternion.Euler(0, 0, -90));
                 }
-                else if(EnemyKill < 30)
+                else if(EnemyKill < 110)
                 {
                     Instantiate(ShotPre, new Vector3(transform.position.x + 0.5f,transform.position.y + 0.5f,0), Quaternion.Euler(0, 0, -90));
                     Instantiate(ShotPre, new Vector3(transform.position.x + 0.5f, transform.position.y - 0.5f, 0), Quaternion.Euler(0,0, -90));
